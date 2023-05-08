@@ -13,6 +13,44 @@
 
 const divFirst = document.querySelector('#first');
 
+const pFirst = document.createElement('p');
+pFirst.innerText = "Hi";
+
+setTimeout(() => {
+    divFirst.insertAdjacentElement('afterbegin', pFirst);
+}, 1000);
+
+
+const divTimeoutNesting = document.querySelector('#timeout-nesting');
+
+const pOne = document.createElement('p');
+pOne.innerText = "One";
+
+const pTwo = document.createElement('p');
+pTwo.innerText = "Two";
+
+setTimeout(() => {
+    divTimeoutNesting.insertAdjacentElement('afterbegin', pOne);
+    setTimeout(() => {
+        pOne.insertAdjacentElement('afterend', pTwo);
+    }, 1000);
+}, 2000);
+
+
+let c = 0; // initialize (c)ounter variable
+
+const counter = setInterval(() => {
+    c++; // ha, like the programming language. C++. ha. anyway...
+    console.log(c);
+}, 1000);
+
+
+const stopBtn = document.querySelector('button');
+
+stopBtn.addEventListener('click', () => {
+    clearInterval(counter);
+});
+
 
 // BONUS
 /*
