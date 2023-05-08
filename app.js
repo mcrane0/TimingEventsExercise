@@ -52,6 +52,7 @@ stopBtn.addEventListener('click', () => {
 });
 
 
+
 // BONUS
 /*
 4. Using setInterval, display a countdown clock as a p element/tag inside the div with the id of "countdown". 
@@ -60,3 +61,32 @@ stopBtn.addEventListener('click', () => {
     it display a message saying… "TIME IS UP" instead of the clock (AKA 0:00).
 */
 
+const divCountdown = document.querySelector('#countdown');
+
+const pClock = document.createElement('p');
+pClock.innerText = " ";
+divCountdown.insertAdjacentElement('afterbegin', pClock);
+
+let time = 120;
+let minutes = 0;
+let seconds = 0;
+
+setInterval(() => {
+    if (time < 0){
+        pClock.innerHTML = "TIME IS UP";
+    }
+    else {
+        minutes = Math.floor(time/60);
+        seconds = time % 60;
+
+        if (seconds < 10){
+            pClock.innerText = (minutes + ":0" + seconds);
+        }
+        else {
+            pClock.innerText = (minutes + ":" + seconds);
+        }
+
+        time--;
+    }
+    
+}, 1000);
